@@ -9,6 +9,8 @@ destructor, which means the destructor is potentially blocking, pending
 the underlying mutex to be released by whomever owns it. Whether that's
 acceptable or not for your application is up to your requirements.
 
+To use the safe_mutex, just copy the header file where you need it.
+
 Usage:
 
     #include <mutex> // for example
