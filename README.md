@@ -9,8 +9,11 @@ which means the destructor is potentially blocking, pending the underlying
 mutex to be released by whomever owns it. Whether that's acceptable or not for
 your application is up to your requirements.
 
-You should be able to wrap a safe_mutex is a RAII lock, such
-as `std::unique_lock`.
+This also means that you the underlying mutex is not recursive, the thread
+which owns the mutex can't destroy it (more exactly, it will deadlock). If a
+thread wants to destroy the mutex, it must unlock it first.
+
+You can wrap a safe_mutex is a RAII lock, such as `std::unique_lock`.
 
 To use the safe_mutex, just copy the header file wherever you need it.
 
